@@ -39,8 +39,6 @@ function Converter() {
     const calculateConversion = () => {
         const coin1 = coinsState.data.find(coin => coin.uuid === selectedCoin1);
         const coin2 = coinsState.data.find(coin => coin.uuid === selectedCoin2);
-
-        console.log(coinsState.data)
         
         if (coin1 && coin2 && Number(coin1.price) && Number(coin2.price) !== 0) {
             const conversionRate = Number(coin1.price) / Number(coin2.price);
