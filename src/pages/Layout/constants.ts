@@ -1,6 +1,7 @@
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
 import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
+import LanguageIcon from '@mui/icons-material/Language';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { SvgIconTypeMap } from '@mui/material';
 
@@ -28,5 +29,10 @@ export const navLinks: NavLink[] = [
         text: 'News',
         icon: NewspaperOutlinedIcon,
         to: 'news'
+    },
+    {
+        text: 'Converter',
+        icon: LanguageIcon,
+        to: 'converter'
     }
 ];

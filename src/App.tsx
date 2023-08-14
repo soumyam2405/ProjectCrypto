@@ -7,6 +7,7 @@ import Coins from './pages/Coins';
 import Exchanges from './pages/Exchanges';
 import News from './pages/News';
 import CoinDetail from './pages/CoinDetail';
+import Converter from './pages/Converter';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="coins/:id" element={<CoinDetail />} />
         <Route path="exchanges" element={<Exchanges />} />
         <Route path="news" element={<News />} />
+        <Route path="converter" element={<Converter />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     </Layout>
