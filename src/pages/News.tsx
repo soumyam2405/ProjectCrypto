@@ -38,7 +38,9 @@ function News() {
             {
                 (latestNews as { articles: string[], status: string, totalResults: Number }).articles.map((article: any) => {
                     return (
-                        <p key={article.url}>{ article.title }</p>
+                        <Grid container spacing={2}>
+                            <p key={article.url}>{ article.title }</p>
+                        </Grid>
                     )
                 })
             }

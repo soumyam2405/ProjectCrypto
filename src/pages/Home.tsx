@@ -108,33 +108,6 @@ function Home() {
                     )
                 }
             </section>
-            <section style={{ marginBottom: '1.5rem' }}>
-                <Title variant='h5'>Coins News</Title>
-                Coming Soon!
-                {/* {
-                    newsLoading ? (
-                        <Grid container spacing={2}>
-                            <NewsListSkeleton size={12} />
-                        </Grid>
-                    ) : (
-                        <React.Fragment>
-                            <Grid container spacing={2}>
-                                <NewsList news={homeState.news} />
-                            </Grid>
-                            <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-                                <Link
-                                    component={RouterLink}
-                                    to={'news'}
-                                    variant="body2"
-                                    textAlign={"center"}
-                                >
-                                    Show More
-                                </Link>
-                            </Box>
-                        </React.Fragment>
-                    )
-                } */}
-            </section>
         </React.Fragment>
     );
 }
