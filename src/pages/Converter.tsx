@@ -16,6 +16,7 @@ function Converter() {
     const dispatch = useAppDispatch();
     const [selectedCoin1, setSelectedCoin1] = useState('');
     const [selectedCoin2, setSelectedCoin2] = useState('');
+    const [selectedCoinCount, setSelectedCoinCount] = useState('1');
     const [conversionResult, setConversionResult] = useState(0);
 
     const retrieveCoins = (offset: number, limit: number) => {
@@ -39,9 +40,10 @@ function Converter() {
     const calculateConversion = () => {
         const coin1 = coinsState.data.find(coin => coin.uuid === selectedCoin1);
         const coin2 = coinsState.data.find(coin => coin.uuid === selectedCoin2);
+        const numberOfCoins = Number(selectedCoinCount);
         
         if (coin1 && coin2 && Number(coin1.price) && Number(coin2.price) !== 0) {
-            const conversionRate = Number(coin1.price) / Number(coin2.price);
+            const conversionRate = Number(coin1.price) * numberOfCoins / Number(coin2.price);
             setConversionResult(conversionRate);
         } else {
             setConversionResult(0);
@@ -72,7 +74,7 @@ function Converter() {
 
     useEffect(() => {
         calculateConversion(); // Calculate conversion whenever selected coins change
-    }, [selectedCoin1, selectedCoin2, coinsState.data]);
+    }, [selectedCoin1, selectedCoin2, coinsState.data, selectedCoinCount]);
     
     if (loading) return (
         <Grid container spacing={2}>
@@ -90,6 +92,16 @@ function Converter() {
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <TextField
+                        type="number"
+                        label="Number of Coins"
+                        value={selectedCoinCount}
+                        onChange={(event) => setSelectedCoinCount(event.target.value)}
+                        fullWidth
+                    >
+                    </TextField>
+                </Grid>
+                <Grid item xs={6}>
+                    <TextField
                         select
                         label="Select Coin 1"
                         value={selectedCoin1}
@@ -103,7 +115,7 @@ function Converter() {
                         ))}
                     </TextField>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6}>
                     <TextField
                         select
                         label="Select Coin 2"
@@ -121,7 +133,7 @@ function Converter() {
                 <Grid item xs={12}>
                     {conversionResult !== 0 && (
                         <Box p={2} border={1} borderRadius={4} borderColor="grey.300">
-                            1 {grabName(selectedCoin1)} = {conversionResult.toFixed(2)} {grabName(selectedCoin2)}
+                            {selectedCoinCount} {grabName(selectedCoin1)} = {conversionResult.toFixed(2)} {grabName(selectedCoin2)}
                         </Box>
                     )}
                 </Grid>
